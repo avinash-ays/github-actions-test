@@ -14,24 +14,29 @@ const fs = require('fs');
 const path = require('path');
 
 async function getUpdatedFiles() {
-  const scraperPath = path.join(__dirname, '../../../scrapper');
+  // Assuming the script file is located two levels above the scrapper folder
+  const scraperPath = path.join(__dirname, '../../scrapper');
   const updatedFiles = [];
 
-  // Get the list of files in the scraper directory
-  const files = fs.readdirSync(scraperPath);
+  try {
+    // Get the list of files in the scraper directory
+    const files = fs.readdirSync(scraperPath);
 
-  // Process each file
-  files.forEach(async (file) => {
-    const filePath = path.join(scraperPath, file);
+    // Process each file
+    files.forEach((file) => {
+      const filePath = path.join(scraperPath, file);
 
-    // Check if the file was modified after the last commit/push
-    const modifiedTime = fs.statSync(filePath).mtime;
-    const lastPushTime = getLastPushTime(); // Implement a function to get the last push time
+      // Check if the file was modified after the last commit/push
+      const modifiedTime = fs.statSync(filePath).mtime;
+      const lastPushTime = getLastPushTime(); // Implement a function to get the last push time
 
-    if (modifiedTime > lastPushTime) {
-      updatedFiles.push(file); // Collect updated file names
-    }
-  });
+      if (modifiedTime > lastPushTime) {
+        updatedFiles.push(file); // Collect updated file names
+      }
+    });
+  } catch (error) {
+    console.error('Error reading directory:', error);
+  }
 
   return updatedFiles;
 }
@@ -45,4 +50,3 @@ function getLastPushTime() {
   const updatedFiles = await getUpdatedFiles();
   console.log('Updated files:', updatedFiles);
 })();
-
