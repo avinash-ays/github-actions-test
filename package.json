@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@webscraperio/api-client-nodejs": "^1.1.0",
-    "axios": "^1.6.8"
+    "@webscraperio/api-client-nodejs": "^1.1.0"
   }
 }
