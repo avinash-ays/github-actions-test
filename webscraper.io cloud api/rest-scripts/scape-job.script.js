@@ -2,10 +2,11 @@ const client = require("../config");
 
 async function startScrapingJob() {
     try {
-        const response = await client.getSitemaps();
-        console.log('Scraping job started successfully:', response.data);
+        let generator = client.getSitemaps();
+        const sitemaps = await generator.getAllRecords();
+        console.log('Sitemaps are:', sitemaps);
     } catch (error) {
-        console.error('Error starting scraping job:', error.message);
+        console.error('Error getting sitemaps:', error.message);
     }
 }
 
