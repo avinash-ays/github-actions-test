@@ -20,6 +20,7 @@ async function getUpdatedFiles() {
 
   try {
     // Get the list of files in the scraper directory
+    console.log("scraper path : ",scraperPath);
     const files = fs.readdirSync(scraperPath);
 
     // Process each file
