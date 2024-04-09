@@ -1,11 +1,11 @@
 const client = require("../config");
 
 async function updateSitemaps() {
-    //get the sitemaps from cloud.webscraper.io
-    let generator = client.getSitemaps();
-    const sitemaps = await generator.getAllRecords();
+  //get the sitemaps from cloud.webscraper.io
+  let generator = client.getSitemaps();
+  const sitemaps = await generator.getAllRecords();
 
-    console.log("SITEMAPS", sitemaps);
+  console.log("SITEMAPS", sitemaps);
 }
 
 updateSitemaps();
@@ -18,12 +18,16 @@ async function getUpdatedFiles() {
 
   try {
     // Get the list of files in the scraper directory
-    const files = fs.readdirSync("github-actions-test/scrapper");
+    const scriptDir = path.dirname(__filename);
+
+    // Construct the absolute path to the scrapper folder
+    const scrapperDir = path.join(scriptDir, '../../scrapper');
+
+    // Read the files from the scrapper directory
+    const files = fs.readdirSync(scrapperDir);
 
     // Process each file
     files.forEach((file) => {
-      const filePath = path.join(scraperPath, file);
-
       // Check if the file was modified after the last commit/push
       const modifiedTime = fs.statSync(filePath).mtime;
       const lastPushTime = getLastPushTime(); // Implement a function to get the last push time
