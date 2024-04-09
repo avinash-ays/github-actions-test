@@ -17,7 +17,7 @@
         {
             "id": "products",
             "parentSelectors": [
-                "pagination"
+                "paginationn"
             ],
             "type": "SelectorLink",
             "selector": ".css-jurd7a a",
