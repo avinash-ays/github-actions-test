@@ -1,0 +1,168 @@
+{
+    "_id": "GoatSitemap",
+    "startUrl": [
+        "https://www.goat.com/sneakers"
+    ],
+    "selectors": [
+        {
+            "id": "products",
+            "parentSelectors": [
+                "_root"
+            ],
+            "type": "SelectorElementScroll",
+            "selector": "a.GridCellLink__Link-sc-2zm517-0",
+            "multiple": true,
+            "delay": 2000,
+            "elementLimit": 120
+        },
+        {
+            "id": "product",
+            "parentSelectors": [
+                "products"
+            ],
+            "type": "SelectorLink",
+            "selector": "_parent_",
+            "multiple": false,
+            "linkType": "linkFromHref"
+        },
+        {
+            "id": "name",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorText",
+            "selector": "h1[class=\"ProductInfo__Name-sc-yvcr9v-2 bMmuxU\"]",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "brand ",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorText",
+            "selector": "a[data-qa=\"product_breadcrumb\"]:first-of-type",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "category",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorText",
+            "selector": "ol[data-qa=\"product_breadcrumbs_wrapper\"] li[class=\"ProductBreadcrumbs__ListItem-sc-1xjrw34-0 hsJiLz\"]:nth-of-type(2)",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "style",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorText",
+            "selector": "ol[data-qa=\"product_breadcrumbs_wrapper\"] li[class=\"ProductBreadcrumbs__ListItem-sc-1xjrw34-0 hsJiLz\"]:nth-of-type(3)",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "size",
+            "parentSelectors": [
+                "sizes"
+            ],
+            "type": "SelectorText",
+            "selector": "div.SizeAndPrice__Size-sc-1w2dirf-1",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "price",
+            "parentSelectors": [
+                "sizes"
+            ],
+            "type": "SelectorText",
+            "selector": "span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "description",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorText",
+            "selector": "p.WindowItemLongText__Text-sc-1mxjefz-1",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "gender",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorText",
+            "selector": "button.GenderSizing__Button-sc-1eb50io-0",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "image",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorImage",
+            "selector": ".swiper-slide-active img",
+            "multiple": false
+        },
+        {
+            "id": "sizes",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorElement",
+            "selector": "div.swiper-slide:nth-of-type(n+14)",
+            "multiple": true
+        },
+        {
+            "id": "metadata",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorElementScroll",
+            "selector": "div.Window-sc-12xj74n-0",
+            "multiple": false,
+            "delay": 2000,
+            "elementLimit": 0
+        },
+        {
+            "id": "product-release-date",
+            "parentSelectors": [
+                "metadata"
+            ],
+            "type": "SelectorText",
+            "selector": "[data-qa='release_date_sort_text'] span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "product-sku",
+            "parentSelectors": [
+                "metadata"
+            ],
+            "type": "SelectorText",
+            "selector": "div[class=\"WindowItemShortText__Wrapper-sc-jrzdw-0 cphRqx window-item\"] + div[class=\"WindowItemShortText__Wrapper-sc-jrzdw-0 cphRqx window-item\"] span[class=\"WindowItemShortText__Right-sc-jrzdw-2 XUSFT\"]",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "product-colourway",
+            "parentSelectors": [
+                "metadata"
+            ],
+            "type": "SelectorText",
+            "selector": "div[class=\"FactsWindow__Wrapper-sc-1hjbbqw-1 bnCzVo\"] div[class=\"WindowItemShortText__Wrapper-sc-jrzdw-0 cphRqx window-item\"]:nth-of-type(7) span[class=\"WindowItemShortText__Right-sc-jrzdw-2 XUSFT\"]",
+            "multiple": false,
+            "regex": ""
+        }
+    ]
+}

@@ -1,8 +1,10 @@
-name: Scrape Job
+name: Update Sitemaps
 on:
   push:
     branches:
-      - main
+      - workflow-actions
+    paths:
+      - 'nicekicks-crawler/scrapper/**'
 
 jobs:
   scrape:
@@ -11,11 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v2 
-      #   with:
-      #     node-version: '14'
 
       - name: install dependencies
         run : npm install
