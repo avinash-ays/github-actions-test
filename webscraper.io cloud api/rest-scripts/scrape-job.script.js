@@ -14,14 +14,11 @@ const fs = require('fs');
 const path = require('path');
 
 async function getUpdatedFiles() {
-  // Assuming the script file is located two levels above the scrapper folder
-  const scraperPath = path.join(__dirname, '../../scrapper');
   const updatedFiles = [];
 
   try {
     // Get the list of files in the scraper directory
-    console.log("scraper path : ",scraperPath);
-    const files = fs.readdirSync(scraperPath);
+    const files = fs.readdirSync("../../scrapper");
 
     // Process each file
     files.forEach((file) => {
