@@ -1,4 +1,4 @@
-const { client } = require('../config');
+const client = require("../config");
 
 async function startScrapingJob() {
     try {
