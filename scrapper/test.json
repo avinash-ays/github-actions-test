@@ -1,0 +1,112 @@
+{
+    "_id": "Adidas_SiteMap",
+    "startUrl": [
+        "https://www.adidas.com/us/men-shoes"
+    ],
+    "selectors": [
+        {
+            "id": "NextPage_Buttonn",
+            "parentSelectors": [
+                "_root"
+            ],
+            "type": "SelectorElementClick",
+            "clickActionType": "real",
+            "clickElementSelector": "a[data-auto-id=\"plp-pagination-next\"]",
+            "clickElementUniquenessType": "uniqueText",
+            "clickType": "clickOnce",
+            "delay": 2000,
+            "discardInitialElements": "do-not-discard",
+            "multiple": true,
+            "selector": "body"
+        },
+        {
+            "id": "Pro_wrapper",
+            "parentSelectors": [
+                "NextPage_Button"
+            ],
+            "type": "SelectorLink",
+            "selector": "div[class=\"glass-product-card__assets\"] a[data-auto-id=\"glass-hockeycard-link\"]",
+            "multiple": true,
+            "linkType": "linkFromHref"
+        },
+        {
+            "id": "Product_name",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": ".sidebar___29cCJ .name___120FN span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "Product_Price",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": ".gl-vspace .price___Z74_w div.gl-price-item",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "Product_Description",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": "div.text-content___13aRm",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "Product_image",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorImage",
+            "selector": "div.view-cell-container___aqB7e:nth-of-type(n+2) img",
+            "multiple": false
+        },
+        {
+            "id": "Product_Category",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": ".pre-header___3bx4D div span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "Available_Size",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": "button.gl-label:nth-of-type(1)",
+            "multiple": true,
+            "regex": ""
+        },
+        {
+            "id": "Available_colours",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": "div.color-label___2hXaD",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "Product_Code (SKU)",
+            "parentSelectors": [
+                "Pro_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": "ul:nth-of-type(2) li.gl-vspace-bpall-small:nth-of-type(4)",
+            "multiple": false,
+            "regex": ""
+        }
+    ]
+}
