@@ -18,7 +18,7 @@ async function getUpdatedFiles() {
 
   try {
     // Get the list of files in the scraper directory
-    const files = fs.readdirSync("../../scrapper");
+    const files = fs.readdirSync("github-actions-test/scrapper");
 
     // Process each file
     files.forEach((file) => {
