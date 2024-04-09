@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 
 async function getUpdatedFiles() {
-  const scraperPath = path.join(__dirname, '../../../scraper');
+  const scraperPath = path.join(__dirname, '../../../scrapper');
   const updatedFiles = [];
 
   // Get the list of files in the scraper directory
