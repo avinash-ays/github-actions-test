@@ -25,12 +25,11 @@ function identifyUpdatedFiles() {
 
     // Split the output by newline character to get a list of updated file names
     const updatedFileList = updatedFiles.trim().split('\n');
-
     // Print the list of updated files
     console.log(`Updated files within the folder scrapper:`);
     console.log(updatedFileList);
-
-    // You can perform any additional tasks based on the list of updated files here
+    
+    return updatedFileList;
   } catch (error) {
     console.error('Error identifying updated files:', error);
   }
