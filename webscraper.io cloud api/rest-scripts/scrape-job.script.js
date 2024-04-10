@@ -34,7 +34,7 @@ async function updateCloudSitemaps(local, cloud) {
   const localValuesNotInCloud = local.filter(item => !cloudNames.includes(item.name));
   const cloudValuesNotInLocal = cloud.filter(item => !localNames.includes(item.name));
     
-  console.log("localValuesNotInCloud : ", localValuesNotInCloud, " : ", cloudValuesNotInLocal);
+  console.log("localValuesNotInCloud : ", localValuesNotInCloud, "cloudValuesNotInLocal : ", cloudValuesNotInLocal);
   return {
       localValuesNotInCloud,
       cloudValuesNotInLocal
