@@ -18,7 +18,7 @@ async function readLocalSitemaps(dir) {
 function identifyModifiedFiles(folderPath) {
     try {
         // Use git diff to get the list of modified files in the specified folder
-        const command = `git diff --name-only HEAD^ HEAD -- scraper/ -- ${folderPath}/`;
+        const command = `git diff --name-only HEAD^ HEAD -- ${folderPath}/`;
         const modifiedFiles = execSync(command).toString().trim().split('\n');
         
         // Return the modified files
