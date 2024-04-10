@@ -15,21 +15,32 @@ async function readLocalSitemaps(dir) {
     }
 }
 
-function identifyModifiedFiles(folderPath) {
-    try {
-        // Use git diff to get the list of modified files in the specified folder
-        const command = `git diff --name-only HEAD^ HEAD -- ${folderPath}/`;
-        const modifiedFiles = execSync(command).toString().trim().split('\n');
-        
-        // Return the modified files
-        return modifiedFiles;
-    } catch (error) {
-        console.error('Error identifying modified files:', error);
-        return [];
-    }
+// Function to identify updated files within a specific folder
+function identifyUpdatedFiles(folderPath) {
+  try {
+    // Run the Git command to identify updated files
+    const command = `git diff --name-only HEAD^ HEAD -- ${folderPath}`;
+    const updatedFiles = execSync(command, { encoding: 'utf-8' });
+
+    // Split the output by newline character to get a list of updated file names
+    const updatedFileList = updatedFiles.trim().split('\n');
+
+    // Print the list of updated files
+    console.log(`Updated files within the folder ${folderPath}:`);
+    console.log(updatedFileList);
+
+    // You can perform any additional tasks based on the list of updated files here
+  } catch (error) {
+    console.error('Error identifying updated files:', error);
+  }
 }
+
+// Call the function with the folder path you want to check
+const folderPath = 'folder/';
+identifyUpdatedFiles(folderPath);
+
 
 module.exports = {
     readLocalSitemaps,
-    identifyModifiedFiles
+    identifyUpdatedFiles
 };

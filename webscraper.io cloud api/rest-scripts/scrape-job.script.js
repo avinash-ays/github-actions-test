@@ -1,4 +1,4 @@
-const { readLocalSitemaps, identifyModifiedFiles } = require('./util');
+const { readLocalSitemaps, identifyUpdatedFiles } = require('./util');
 const { getSitemaps, createSitemap, deleteSitemap, createScrapJob } = require('./webscrapper-cloud-api');
 
 async function findDiffSitemaps(local, cloud) {
@@ -43,7 +43,7 @@ async function main() {
     // Call the function to identify modified files in the "myFolder" folder
     console.log('calling diff function');
     const folderPath = 'scrapper'; // Specify the path to your folder here
-    const modifiedFiles = identifyModifiedFiles(folderPath);
+    const modifiedFiles = identifyUpdatedFiles(folderPath);
     console.log('Modified Files in', folderPath + ':');
     console.log(modifiedFiles.join('\n'));
   } catch (error) {
