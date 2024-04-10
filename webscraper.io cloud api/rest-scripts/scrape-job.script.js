@@ -1,38 +1,5 @@
-const fs = require('fs').promises; // Importing fs promises API
-const client = require("../config");
-
-// get the cloud sitemaps from webscrapper.io cloud
-async function getCloudSitemaps() {
-  try {
-    let generator = client.getSitemaps();
-    return await generator.getAllRecords();
-  } catch (error) {
-    console.error("Failed to get cloud sitemaps: " + error);
-    throw error; // Re-throw the error to propagate it upwards
-  }
-}
-async function createSitemap(map) {
-  try {
-    await client.createSitemap(data);
-  } catch (error) {
-    console.log("failed to create sitemap", error);
-  }
-}
-
-// fetch all local sitemaps from scrapper folder
-async function getFiles(dir) {
-  try {
-    const files = await fs.readdir(dir);
-    const fileObjects = await Promise.all(files.map(async file => {
-      const data = await fs.readFile(`${dir}/${file}`, 'utf8');
-      return { name: file.replace(/\.json$/, ""), data: JSON.parse(data) };
-    }));
-    return fileObjects;
-  } catch (error) {
-    console.error("Error reading local sitemap files: " + error);
-    throw error; // Re-throw the error to propagate it upwards
-  }
-}
+const { readLocalSitemaps } = require('./util');
+const { getSitemaps, createSitemap, deleteSitemap } = require('./webscrapper-cloud-api');
 
 async function findDiffSitemaps(local, cloud) {
   const localNames = local.map(item => item.name);
@@ -41,8 +8,6 @@ async function findDiffSitemaps(local, cloud) {
   const localValuesNotInCloud = local.filter(item => !cloudNames.includes(item.name));
   const cloudValuesNotInLocal = cloud.filter(item => !localNames.includes(item.name));
 
-  console.log("localValuesNotInCloud : ", localValuesNotInCloud);
-  console.log("cloudValuesNotInLocal : ", cloudValuesNotInLocal);
   return {
     localValuesNotInCloud,
     cloudValuesNotInLocal
@@ -51,17 +16,28 @@ async function findDiffSitemaps(local, cloud) {
 
 async function main() {
   try {
-    const cloudSitemaps = await getCloudSitemaps();
-    const localSitemaps = await getFiles('scrapper');
+    const cloudSitemaps = await getSitemaps();
+    const localSitemaps = await readLocalSitemaps('scrapper');
 
     // Stringify data of local sitemaps
-    const stringifiedLocalSitemaps = localSitemaps.map(sitemap => {
-      return { name: sitemap.name, data: JSON.stringify(sitemap.data) };
-    });
-
+    const stringifiedLocalSitemaps = localSitemaps.map(sitemap => ({
+      name: sitemap.name,
+      data: JSON.stringify(sitemap.data)
+    }));
+    // 
     const { localValuesNotInCloud, cloudValuesNotInLocal } = await findDiffSitemaps(stringifiedLocalSitemaps, cloudSitemaps);
-    //create sitemaps which are not in cloud
-    localValuesNotInCloud.forEach(async (local)=>await createSitemap(local));
+
+    // Create sitemaps which are not in cloud
+    for (const local of localValuesNotInCloud) {
+      //create a new sitemap
+      const sitemap = await createSitemap(local.data);
+      //start new scrap-job for new sitemap created
+      await createScrapJob(sitemap.id, JSON.parse(local.data))
+    }
+    //delete sitemap which are not present in local scrapper folder
+    for (const cloud of cloudValuesNotInLocal) {
+      await deleteSitemap(cloud.id);
+    }
   } catch (error) {
     console.error("An error occurred:", error);
   }
