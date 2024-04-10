@@ -44,7 +44,7 @@ async function updateSitemap(sitemap) {
 
 async function createScrapJob(id,sitemap) {
     try {
-        await client.createScrapingJob({
+        return await client.createScrapingJob({
             sitemap_id: id,
             driver: "fast",
             page_load_delay: 2000,
