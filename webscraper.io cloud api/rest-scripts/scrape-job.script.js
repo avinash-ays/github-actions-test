@@ -1,6 +1,6 @@
 const fs = require('fs')
 const client = require("../config");
-const Sitemaps = []
+let Sitemaps = []
 async function updateSitemaps() {
   //get the sitemaps from cloud.webscraper.io
   let generator = client.getSitemaps();
