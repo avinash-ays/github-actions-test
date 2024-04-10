@@ -1,21 +1,16 @@
 const fs = require('fs')
 const client = require("../config");
-let Sitemaps = []
-async function updateSitemaps() {
+let cloudSitemaps = []
+async function getCloudSitemaps() {
   //get the sitemaps from cloud.webscraper.io
   let generator = client.getSitemaps();
-  Sitemaps = await generator.getAllRecords();
-  console.log("SITEMAPS", Sitemaps);
+  cloudSitemaps = await generator.getAllRecords();
+  console.log("Cloud-Sitemaps", cloudSitemaps);
 }
+getCloudSitemaps();
 
-updateSitemaps();
-
-// Recursive function to get files
 function getFiles(dir, files = []) {
-  const fileList = fs.readdirSync(dir)
-  console.log('Reading files:', fileList);
-
-  return files
+  return fs.readdirSync(dir)
 }
-const filesInFolder = getFiles('scrapper')
-console.log(filesInFolder);
+const localSitemaps = getFiles('scrapper')
+console.log(localSitemaps);
