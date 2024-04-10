@@ -19,7 +19,8 @@ async function readLocalSitemaps(dir) {
 function identifyUpdatedFiles(folderPath) {
   try {
     // Run the Git command to identify updated files
-    const command = `git diff --name-only HEAD^ HEAD -- ${folderPath}`;
+
+    const command = `git diff --name-only HEAD origin/main -- ${folderPath}/`;
     const updatedFiles = execSync(command, { encoding: 'utf-8' });
 
     // Split the output by newline character to get a list of updated file names
