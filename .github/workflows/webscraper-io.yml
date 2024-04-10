@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'scrapper/**'
+    # paths:
+    #   - 'scrapper/**'
 
 jobs:
   scrape:
