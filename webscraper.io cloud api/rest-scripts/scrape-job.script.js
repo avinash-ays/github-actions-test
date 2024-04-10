@@ -42,7 +42,7 @@ async function main() {
 
     // Call the function to identify modified files in the "myFolder" folder
     console.log('calling diff function');
-    const folderPath = '../../../scrapper'; // Specify the path to your folder here
+    const folderPath = 'scrapper'; // Specify the path to your folder here
     const modifiedFiles = identifyModifiedFiles(folderPath);
     console.log('Modified Files in', folderPath + ':');
     console.log(modifiedFiles.join('\n'));
