@@ -11,6 +11,13 @@ async function getCloudSitemaps() {
     throw error; // Re-throw the error to propagate it upwards
   }
 }
+async function createSitemap(map) {
+  try {
+    await client.createSitemap(data);
+  } catch (error) {
+    console.log("failed to create sitemap", error);
+  }
+}
 
 // fetch all local sitemaps from scrapper folder
 async function getFiles(dir) {
@@ -27,18 +34,18 @@ async function getFiles(dir) {
   }
 }
 
-async function updateCloudSitemaps(local, cloud) {
+async function findDiffSitemaps(local, cloud) {
   const localNames = local.map(item => item.name);
   const cloudNames = cloud.map(item => item.name);
 
   const localValuesNotInCloud = local.filter(item => !cloudNames.includes(item.name));
   const cloudValuesNotInLocal = cloud.filter(item => !localNames.includes(item.name));
-    
+
   console.log("localValuesNotInCloud : ", localValuesNotInCloud);
   console.log("cloudValuesNotInLocal : ", cloudValuesNotInLocal);
   return {
-      localValuesNotInCloud,
-      cloudValuesNotInLocal
+    localValuesNotInCloud,
+    cloudValuesNotInLocal
   };
 }
 
@@ -52,7 +59,9 @@ async function main() {
       return { name: sitemap.name, data: JSON.stringify(sitemap.data) };
     });
 
-    await updateCloudSitemaps(stringifiedLocalSitemaps, cloudSitemaps);
+    const { localValuesNotInCloud, cloudValuesNotInLocal } = await findDiffSitemaps(stringifiedLocalSitemaps, cloudSitemaps);
+    //create sitemaps which are not in cloud
+    localValuesNotInCloud.forEach(async (local)=>await createSitemap(local));
   } catch (error) {
     console.error("An error occurred:", error);
   }
