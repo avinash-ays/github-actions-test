@@ -16,18 +16,18 @@ async function readLocalSitemaps(dir) {
 }
 
 // Function to identify updated files within a specific folder
-function identifyUpdatedFiles(folderPath) {
+function identifyUpdatedFiles() {
   try {
     // Run the Git command to identify updated files
  
-    const command = `git diff --name-only HEAD origin/main -- ${folderPath}/`;
+    const command = `git diff --name-only HEAD origin/main -- scrapper/`;
     const updatedFiles = execSync(command, { encoding: 'utf-8' });
 
     // Split the output by newline character to get a list of updated file names
     const updatedFileList = updatedFiles.trim().split('\n');
 
     // Print the list of updated files
-    console.log(`Updated files within the folder ${folderPath}:`);
+    console.log(`Updated files within the folder scrapper:`);
     console.log(updatedFileList);
 
     // You can perform any additional tasks based on the list of updated files here

@@ -42,9 +42,8 @@ async function main() {
 
     // Call the function to identify modified files in the "myFolder" folder
     console.log('calling diff function');
-    const folderPath = 'scrapper'; // Specify the path to your folder here
-    const modifiedFiles = identifyUpdatedFiles(folderPath);
-    console.log('Modified Files in', folderPath + ':');
+    const modifiedFiles = identifyUpdatedFiles();
+    console.log('Modified Files in scrapper', + ':');
     console.log(modifiedFiles.join('\n'));
   } catch (error) {
     console.error("An error occurred:", error);
