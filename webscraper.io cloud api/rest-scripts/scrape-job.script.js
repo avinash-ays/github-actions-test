@@ -1,16 +1,33 @@
 const fs = require('fs')
 const client = require("../config");
-let cloudSitemaps = []
-async function getCloudSitemaps() {
-  //get the sitemaps from cloud.webscraper.io
-  let generator = client.getSitemaps();
-  cloudSitemaps = await generator.getAllRecords();
-  console.log("Cloud-Sitemaps", cloudSitemaps);
-}
-getCloudSitemaps();
 
-function getFiles(dir, files = []) {
-  return fs.readdirSync(dir)
+//get the cloud sitemaps from webscrapper.io cloud
+async function getCloudSitemaps() {
+  try {
+    let generator = client.getSitemaps();
+    return await generator.getAllRecords();
+  } catch (error) {
+    console.error("failed to get cloud sitemap's" + error);
+  }
 }
+// fetch all local sitemaps from scrapper folder
+function getFiles(dir) {
+  try {
+    const files = fs.readdirSync(dir);
+    const fileObjects = files.map(file => {
+        const data = fs.readFileSync(`${dir}/${file}`, 'utf8');
+        return { name: file.replace(/\.json$/, ""), data: JSON.parse(data) };
+    });
+    return fileObjects;
+  } catch (error) {
+    console.error("error parsing JSON file" + error);    
+  }
+}
+
+function updateCloudSitemaps(local,cloud){
+  console.log(
+}
+
+const cloudSitemaps = getCloudSitemaps();
 const localSitemaps = getFiles('scrapper')
-console.log(localSitemaps);
+const updateCloudSitemaps(localSitemaps,cloudSitemaps);
