@@ -27,16 +27,17 @@ async function main() {
     // 
     const { localValuesNotInCloud, cloudValuesNotInLocal } = await findDiffSitemaps(stringifiedLocalSitemaps, cloudSitemaps);
 
+    //delete sitemap which are not present in local scrapper folder
+    for (const cloud of cloudValuesNotInLocal) {
+      await deleteSitemap(cloud.id);
+    }
+    
     // Create sitemaps which are not in cloud
     for (const local of localValuesNotInCloud) {
       //create a new sitemap
       const sitemap = await createSitemap(local.data);
       //start new scrap-job for new sitemap created
       await createScrapJob(sitemap.id, JSON.parse(local.data))
-    }
-    //delete sitemap which are not present in local scrapper folder
-    for (const cloud of cloudValuesNotInLocal) {
-      await deleteSitemap(cloud.id);
     }
   } catch (error) {
     console.error("An error occurred:", error);
