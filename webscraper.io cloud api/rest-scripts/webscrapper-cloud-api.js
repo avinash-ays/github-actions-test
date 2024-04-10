@@ -46,7 +46,7 @@ async function createScrapJob(id,sitemap) {
     try {
         return await client.createScrapingJob({
             sitemap_id: id,
-            driver: "fast",
+            driver: "fulljs",
             page_load_delay: 2000,
             request_interval: 2000,
             proxy: 0,
