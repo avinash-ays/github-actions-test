@@ -19,7 +19,7 @@ async function readLocalSitemaps(dir) {
 function identifyUpdatedFiles(folderPath) {
   try {
     // Run the Git command to identify updated files
-
+ 
     const command = `git diff --name-only HEAD origin/main -- ${folderPath}/`;
     const updatedFiles = execSync(command, { encoding: 'utf-8' });
 
@@ -35,11 +35,6 @@ function identifyUpdatedFiles(folderPath) {
     console.error('Error identifying updated files:', error);
   }
 }
-
-// Call the function with the folder path you want to check
-const folderPath = 'folder/';
-identifyUpdatedFiles(folderPath);
-
 
 module.exports = {
     readLocalSitemaps,
