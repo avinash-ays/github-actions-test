@@ -1,4 +1,4 @@
-const { readLocalSitemaps } = require('./util');
+const { readLocalSitemaps, identifyModifiedFiles } = require('./util');
 const { getSitemaps, createSitemap, deleteSitemap, createScrapJob } = require('./webscrapper-cloud-api');
 
 async function findDiffSitemaps(local, cloud) {
