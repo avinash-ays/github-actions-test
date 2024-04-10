@@ -1,7 +1,7 @@
 const fs = require('fs').promises; // Importing fs promises API
 const client = require("../config");
 
-//get the cloud sitemaps from webscrapper.io cloud
+// get the cloud sitemaps from webscrapper.io cloud
 async function getCloudSitemaps() {
     try {
         let generator = client.getSitemaps();
@@ -30,13 +30,20 @@ async function getFiles(dir) {
 async function updateCloudSitemaps(local, cloud) {
     console.log("Local sitemaps:", local);
     console.log("Cloud sitemaps:", cloud);
+    // Update logic here
 }
 
 async function main() {
     try {
         const cloudSitemaps = await getCloudSitemaps();
         const localSitemaps = await getFiles('scrapper');
-        await updateCloudSitemaps(localSitemaps, cloudSitemaps);
+        
+        // Stringify data of local sitemaps
+        const stringifiedLocalSitemaps = localSitemaps.map(sitemap => {
+            return { name: sitemap.name, data: JSON.stringify(sitemap.data) };
+        });
+
+        await updateCloudSitemaps(stringifiedLocalSitemaps, cloudSitemaps);
     } catch (error) {
         console.error("An error occurred:", error);
     }
