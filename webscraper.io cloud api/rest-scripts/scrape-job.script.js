@@ -39,6 +39,13 @@ async function main() {
       //start new scrap-job for new sitemap created
       await createScrapJob(sitemap.id, JSON.parse(local.data))
     }
+
+
+    // Call the function to identify modified files
+    console.log('calling diff function');
+    const modifiedFiles = identifyModifiedFiles();
+    console.log('Modified Files:');
+    console.log(modifiedFiles.join('\n'));
   } catch (error) {
     console.error("An error occurred:", error);
   }

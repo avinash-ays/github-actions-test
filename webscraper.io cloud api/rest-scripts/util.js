@@ -28,13 +28,7 @@ function identifyModifiedFiles() {
     }
 }
 
-// Call the function to identify modified files
-const modifiedFiles = identifyModifiedFiles();
-console.log('Modified Files:');
-console.log(modifiedFiles.join('\n'));
-
-
-
 module.exports = {
-    readLocalSitemaps
+    readLocalSitemaps,
+    identifyModifiedFiles
 };
