@@ -1,5 +1,5 @@
 const { readLocalSitemaps } = require('./util');
-const { getSitemaps, createSitemap, deleteSitemap } = require('./webscrapper-cloud-api');
+const { getSitemaps, createSitemap, deleteSitemap, createScrapJob } = require('./webscrapper-cloud-api');
 
 async function findDiffSitemaps(local, cloud) {
   const localNames = local.map(item => item.name);
@@ -31,7 +31,7 @@ async function main() {
     for (const cloud of cloudValuesNotInLocal) {
       await deleteSitemap(cloud.id);
     }
-    
+
     // Create sitemaps which are not in cloud
     for (const local of localValuesNotInCloud) {
       //create a new sitemap
