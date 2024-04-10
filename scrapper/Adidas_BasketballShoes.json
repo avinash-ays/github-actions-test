@@ -1,0 +1,48 @@
+{
+    "_id": "Adidas_BasketballShoes",
+    "startUrl": [
+        "https://www.adidas.com/us/men-basketball-shoes"
+    ],
+    "selectors": [
+        {
+            "id": "Product_wrapper",
+            "parentSelectors": [
+                "_root"
+            ],
+            "type": "SelectorLink",
+            "selector": "div[class=\"glass-product-card__assets\"] a[data-auto-id=\"glass-hockeycard-link\"]",
+            "multiple": true,
+            "linkType": "linkFromHref"
+        },
+        {
+            "id": "Product_name",
+            "parentSelectors": [
+                "Product_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": ".sidebar___29cCJ .name___120FN span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "Product_price",
+            "parentSelectors": [
+                "Product_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": ".gl-vspace .price___Z74_w div.gl-price-item",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "Product_colour",
+            "parentSelectors": [
+                "Product_wrapper"
+            ],
+            "type": "SelectorText",
+            "selector": "div.color-label___2hXaD",
+            "multiple": false,
+            "regex": ""
+        }
+    ]
+}
