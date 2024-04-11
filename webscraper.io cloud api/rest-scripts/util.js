@@ -4,20 +4,19 @@ const path = require('path');
 
 async function readLocalSitemaps(dir) {
   try {
-      const files = await fs.readdir(dir);
-      const fileObjects = await Promise.all(files.map(async file => {
-          const data = await fs.readFile(path.join(dir, file), 'utf8');
-          const checksum = execSync(`git show HEAD:${path.join(dir, file)} | shasum | awk '{print $1}'`, { encoding: 'utf-8' }).trim(); 
-          const jsonData = JSON.parse(data);
-          const updatedData = { ...jsonData, _id: `${jsonData._id}_${checksum}` };
-          console.log(updatedData);
-          const fileNameWithoutExtension = path.parse(file).name;
-          return { name: `${fileNameWithoutExtension}__${checksum}`, data: updatedData };
-      }));
-      return fileObjects;
+    const files = await fs.readdir(dir);
+    const fileObjects = await Promise.all(files.map(async file => {
+      const data = await fs.readFile(path.join(dir, file), 'utf8');
+      const checksum = execSync(`git show HEAD:${path.join(dir, file)} | shasum | awk '{print $1}'`, { encoding: 'utf-8' }).trim();
+      const jsonData = JSON.parse(data);
+      const updatedData = { ...jsonData, _id: `${jsonData._id}__${checksum}` };
+      const fileNameWithoutExtension = path.parse(file).name;
+      return { name: `${fileNameWithoutExtension}__${checksum}`, data: updatedData };
+    }));
+    return fileObjects;
   } catch (error) {
-      console.error("Error reading local sitemap files:", error);
-      throw error;
+    console.error("Error reading local sitemap files:", error);
+    throw error;
   }
 }
 
@@ -35,6 +34,6 @@ async function findDiffSitemaps(local, cloud) {
 }
 
 module.exports = {
-    readLocalSitemaps,
-    findDiffSitemaps,
+  readLocalSitemaps,
+  findDiffSitemaps,
 };

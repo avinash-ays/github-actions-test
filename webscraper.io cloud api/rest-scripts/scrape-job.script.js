@@ -6,13 +6,19 @@ async function main() {
     const cloudSitemaps = await getSitemaps();
     const localSitemaps = await readLocalSitemaps('scrapper/');
 
+    console.log('cloudSitemaps =>',cloudSitemaps);
+    console.log('localSitemaps =>',localSitemaps);
+
     // Stringify data of local sitemaps
     const stringifiedLocalSitemaps = localSitemaps.map(sitemap => ({
       name: sitemap.name,
       data: JSON.stringify(sitemap.data)
     }));
+
     // Get the list of sitemaps to update and delete
     const { toCreateOnCloud, toDeleteOnCloud } = await findDiffSitemaps(stringifiedLocalSitemaps, cloudSitemaps);
+    console.log("toCreateOnCloud =>", toCreateOnCloud);
+    console.log("toDeleteOnCloud =>", toDeleteOnCloud);
 
     //delete sitemap which are not present on repo dir scrapper
     for (const cloud of toDeleteOnCloud) {

@@ -1,0 +1,135 @@
+{
+    "_id": "etsy-products-from-category",
+    "startUrl": [
+        "https://www.etsy.com/c/art-and-collectibles/collectibles/memorabilia?ref=catnav-66"
+    ],
+    "selectors": [
+        {
+            "id": "pagination",
+            "paginationType": "auto",
+            "parentSelectors": [
+                "_root",
+                "pagination"
+            ],
+            "selector": "html:not(:has([rel='alternate'][href*='?page=5'])) link[rel='next']",
+            "type": "SelectorPagination"
+        },
+        {
+            "id": "product-elem",
+            "multiple": true,
+            "parentSelectors": [
+                "pagination"
+            ],
+            "selector": ".wt-grid div[data-listing-card-v2]",
+            "type": "SelectorElement"
+        },
+        {
+            "id": "product-link",
+            "linkType": "linkFromHref",
+            "multiple": false,
+            "parentSelectors": [
+                "product-elem"
+            ],
+            "selector": "a",
+            "type": "SelectorLink"
+        },
+        {
+            "id": "product-page",
+            "multiple": true,
+            "parentSelectors": [
+                "product-link"
+            ],
+            "selector": "html:has(.listing-page-content)",
+            "type": "SelectorElement"
+        },
+        {
+            "extractAttribute": "href",
+            "id": "product-url",
+            "multiple": false,
+            "parentSelectors": [
+                "product-page"
+            ],
+            "selector": "link[rel=\"canonical\"], link[rel=\"alternate\"][hreflang=\"en\"]",
+            "type": "SelectorElementAttribute"
+        },
+        {
+            "id": "product-title",
+            "multiple": false,
+            "parentSelectors": [
+                "product-page"
+            ],
+            "regex": "",
+            "selector": ".listing-page-content h1",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-seller",
+            "multiple": false,
+            "parentSelectors": [
+                "product-page"
+            ],
+            "regex": "",
+            "selector": "#listing-page-cart a[href*='/shop'], #shop_owners_content_toggle p.wt-text-caption a[href*='/shop/']",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-price",
+            "multiple": false,
+            "parentSelectors": [
+                "product-elem"
+            ],
+            "regex": "",
+            "selector": ".n-listing-card__price > p:first-of-type span[aria-hidden=\"true\"], p.lc-price:not(:has(span[aria-hidden=\"true\"]))",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-price-was",
+            "multiple": false,
+            "parentSelectors": [
+                "product-elem"
+            ],
+            "regex": "",
+            "selector": ".wt-text-strikethrough, .strike-through",
+            "type": "SelectorText"
+        },
+        {
+            "id": "shop-review-count",
+            "multiple": false,
+            "parentSelectors": [
+                "product-elem"
+            ],
+            "regex": "[\\d,]+",
+            "selector": ".stars-svg + span, span:has(> input[name='rating']) + span.wt-display-inline-block",
+            "type": "SelectorText"
+        },
+        {
+            "extractAttribute": "value",
+            "id": "shop-rating",
+            "multiple": false,
+            "parentSelectors": [
+                "product-elem"
+            ],
+            "selector": "[name='rating']",
+            "type": "SelectorElementAttribute"
+        },
+        {
+            "id": "product-description",
+            "multiple": false,
+            "parentSelectors": [
+                "product-page"
+            ],
+            "regex": "",
+            "selector": "div[data-id='description-text'] p.wt-break-word, data-product-details-description-text-content, #measurements-section-content-toggle",
+            "type": "SelectorHTML"
+        },
+        {
+            "extractAttribute": "data-src-zoom-image",
+            "id": "product-image",
+            "parentSelectors": [
+                "product-page"
+            ],
+            "selector": ".carousel-pane-list > li[data-image-id] > img",
+            "type": "SelectorGroup"
+        }
+    ]
+}
