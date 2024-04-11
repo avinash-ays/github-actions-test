@@ -16,7 +16,7 @@ async function readLocalSitemaps(dir) {
     return fileObjects;
   } catch (error) {
     console.error("Error reading local sitemap files:", error);
-    return [];
+    throw error;
   }
 }
 
