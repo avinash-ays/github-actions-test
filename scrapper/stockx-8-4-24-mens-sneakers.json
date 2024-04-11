@@ -11,7 +11,7 @@
                 "pagination"
             ],
             "paginationType": "auto",
-            "type": "SelectorPaginationn",
+            "type": "SelectorPagination",
             "selector": "a[aria-current]"
         },
         {
