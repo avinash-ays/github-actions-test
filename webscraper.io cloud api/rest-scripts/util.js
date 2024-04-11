@@ -20,7 +20,7 @@ function identifyUpdatedFiles() {
   try {
     // Run the Git command to identify updated files
  
-    const command = `git diff --name-only HEAD^ origin/main -- scrapper/`;
+    const command = `git diff --name-only HEAD origin/main -- scrapper/`;
     const updatedFiles = execSync(command, { encoding: 'utf-8' });
 
     const updatedFileList = updatedFiles.trim().split('\n');
