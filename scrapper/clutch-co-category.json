@@ -169,6 +169,16 @@
             ],
             "selector": ".profile-header__wrap .sg-provider-logotype > img",
             "type": "SelectorImage"
+        },
+        {
+            "id": "comapny-service-focus",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": ".directory-main-bar .chart-label > span",
+            "type": "SelectorText"
         }
     ]
 }
