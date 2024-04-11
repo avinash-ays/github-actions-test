@@ -22,7 +22,7 @@ function identifyUpdatedFiles() {
  
     const command = `git diff --name-only HEAD origin/main -- scrapper/`;
     const updatedFiles = execSync(command, { encoding: 'utf-8' });
-
+    console.log(updatedFiles);
     const updatedFileList = updatedFiles.trim().split('\n');
     console.log(`Updated files within the folder scrapper:`);
     console.log(updatedFileList);
