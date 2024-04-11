@@ -12,7 +12,7 @@
             "type": "SelectorElementClick",
             "clickActionType": "real",
             "clickElementSelector": "a[data-auto-id=\"plp-pagination-next\"]",
-            "clickElementUniquenessType": "uniqueText",
+            "clickElementUniquenessType": "uniqueTextt",
             "clickType": "clickOnce",
             "delay": 2000,
             "discardInitialElements": "do-not-discard",

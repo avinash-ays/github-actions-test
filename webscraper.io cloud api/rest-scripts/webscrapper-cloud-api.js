@@ -53,7 +53,7 @@ async function createScrapJob(id,sitemap) {
             start_urls: sitemap?.startUrl,
         })
     } catch (error) {
-        console.error("Failed to create Scrap Job", error);
+        console.error("Failed to create Scrap Job", error.message);
     }
 }
 
