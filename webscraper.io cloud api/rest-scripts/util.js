@@ -1,37 +1,37 @@
 const fs = require('fs').promises;
 const { execSync } = require('child_process');
+const path = require('path');
 
 async function readLocalSitemaps(dir) {
-    try {
-        const files = await fs.readdir(dir);
-        const fileObjects = await Promise.all(files.map(async file => {
-            const data = await fs.readFile(`${dir}/${file}`, 'utf8');
-            return { name: file.replace(/\.json$/, ""), data: JSON.parse(data) };
-        }));
-        return fileObjects;
-    } catch (error) {
-        console.error("Error reading local sitemap files:", error);
-        throw error;
-    }
+  try {
+      const files = await fs.readdir(dir);
+      const fileObjects = await Promise.all(files.map(async file => {
+          const data = await fs.readFile(path.join(dir, file), 'utf8');
+          const checksum = execSync(`git show HEAD:${path.join(dir, file)} | shasum | awk '{print $1}'`, { encoding: 'utf-8' }).trim();
+          const fileNameWithoutExtension = path.parse(file).name;
+          return { name: `${fileNameWithoutExtension}__${checksum}`, data: JSON.parse(data) };
+      }));
+      return fileObjects;
+  } catch (error) {
+      console.error("Error reading local sitemap files:", error);
+      throw error;
+  }
 }
 
-// Function to identify updated files within a specific folder
-function identifyUpdatedFiles() {
-  try {
-    // Run the Git command to identify updated files
-    const command = `git diff --name-status HEAD~1..HEAD`;
-    const updatedFiles = execSync(command, { encoding: 'utf-8' });
-    console.log(updatedFiles);
-    const updatedFileList = updatedFiles.trim().split('\n');
-    console.log(`Updated files within the folder scrapper:`);
-    console.log(updatedFileList);
-    return updatedFileList;
-  } catch (error) {
-    console.error('Error identifying updated files:', error);
-  }
+async function findDiffSitemaps(local, cloud) {
+  const localNames = local.map(item => item.name);
+  const cloudNames = cloud.map(item => item.name);
+
+  const toCreateOnCloud = local.filter(item => !cloudNames.includes(item.name));
+  const toDeleteOnCloud = cloud.filter(item => !localNames.includes(item.name));
+
+  return {
+    toCreateOnCloud,
+    toDeleteOnCloud
+  };
 }
 
 module.exports = {
     readLocalSitemaps,
-    identifyUpdatedFiles
+    findDiffSitemaps,
 };

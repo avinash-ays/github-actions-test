@@ -1,0 +1,174 @@
+{
+    "_id": "clutch-co-category",
+    "startUrl": [
+        "https://clutch.co/uk/developers/reactjs/london"
+    ],
+    "selectors": [
+        {
+            "id": "pagination",
+            "paginationType": "linkFromHref",
+            "parentSelectors": [
+                "_root",
+                "pagination"
+            ],
+            "selector": ".next a",
+            "type": "SelectorPagination"
+        },
+        {
+            "id": "company-wrapper",
+            "multiple": true,
+            "parentSelectors": [
+                "pagination"
+            ],
+            "selector": "li.provider-row:has(.company_info a:not([href*='ppc.clutch']))",
+            "type": "SelectorElement"
+        },
+        {
+            "id": "company-link",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "selector": ".company_info a",
+            "type": "SelectorLink"
+        },
+        {
+            "id": "company-title",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": ".company_info a",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-min-project-size",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": "div.module-list div:has(i.icon_tag) > span",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-avg-hourly-rate",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": "div.module-list div:has(i.icon_clock) > span",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-employee-count",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": "div.module-list div:has(i.icon_person) > span",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-location",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": "div.module-list div:has(i.icon_pin) > span",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-page",
+            "multiple": true,
+            "parentSelectors": [
+                "company-link"
+            ],
+            "selector": "html:has(#summary_section)",
+            "type": "SelectorElement"
+        },
+        {
+            "id": "company-tagline",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": ".tagline",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-rating",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": "div.rating-reviews span.rating",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-review-count",
+            "multiple": false,
+            "parentSelectors": [
+                "company-wrapper"
+            ],
+            "regex": "",
+            "selector": "div.rating-reviews .reviews-link",
+            "type": "SelectorText"
+        },
+        {
+            "extractAttribute": "href",
+            "id": "company-website",
+            "multiple": false,
+            "parentSelectors": [
+                "company-page"
+            ],
+            "selector": "[title=\"Visit website\"]",
+            "type": "SelectorElementAttribute"
+        },
+        {
+            "id": "company-contact-phone",
+            "multiple": false,
+            "parentSelectors": [
+                "company-page"
+            ],
+            "regex": "",
+            "selector": ".profile-locations--item-button:contains('Headquarters') + div.profile-locations--item-body .tel",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-establishment-time",
+            "multiple": false,
+            "parentSelectors": [
+                "company-page"
+            ],
+            "regex": "[\\d]+.",
+            "selector": ".icon_folded_flag + span.sg-text__title",
+            "type": "SelectorText"
+        },
+        {
+            "id": "company-description",
+            "multiple": false,
+            "parentSelectors": [
+                "company-page"
+            ],
+            "regex": "",
+            "selector": "div[itemprop=\"description\"]",
+            "type": "SelectorHTML"
+        },
+        {
+            "id": "company-logo",
+            "multiple": false,
+            "parentSelectors": [
+                "company-page"
+            ],
+            "selector": ".profile-header__wrap .sg-provider-logotype > img",
+            "type": "SelectorImage"
+        }
+    ]
+}
