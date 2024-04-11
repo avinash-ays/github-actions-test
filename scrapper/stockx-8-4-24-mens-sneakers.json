@@ -8,7 +8,7 @@
             "id": "pagination",
             "parentSelectors": [
                 "_root",
-                "pagination"
+                "paginationn"
             ],
             "paginationType": "auto",
             "type": "SelectorPagination",
