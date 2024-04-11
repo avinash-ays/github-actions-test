@@ -16,7 +16,8 @@ jobs:
 
       - name: Check if scrapper directory exists
         run: |
-          if [ ! -d "scrapper"]; then
+          if [ ! -d "scrapper" ]; then
+            exho "scrapper not found !!"
             exit 1
           fi
 
