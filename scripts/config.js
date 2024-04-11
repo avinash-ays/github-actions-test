@@ -2,7 +2,7 @@ const api = require("@webscraperio/api-client-nodejs");
 const Client = api.Client;
 
 const client = new Client({
-    token: "mKKBeVdzK6OETH8bRvnTKwTC55hWQoOhOCdLvyDS4u6Fds3nC3CppbUpx4wI",
+    token: "o31qwOFJmShGsXvjwroK8MWb2CHbZoSoc8Esv2kKiF2n6f4uss62zrowPogf",
     useBackoffSleep: false
 });
 
