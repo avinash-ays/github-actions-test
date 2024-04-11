@@ -18,7 +18,7 @@ jobs:
         run: |
           if [ ! -d "scrapper" ]; then
             echo "Scrapper directory not found. Exiting workflow."
-            exit 0
+            exit 1
           fi
 
       - name: install dependencies
