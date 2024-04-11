@@ -28,7 +28,7 @@ async function main() {
     // Create sitemaps which are not on cloud
     for (const local of toCreateOnCloud) {
       //create a new sitemap
-      const sitemap = await createSitemap(local.data);
+       await createSitemap(local.data);
       //start new scrap-job for new sitemap created
       // await createScrapJob(sitemap.id, JSON.parse(local.data));
     }
