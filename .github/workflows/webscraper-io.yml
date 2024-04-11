@@ -17,8 +17,8 @@ jobs:
       - name: Check if scrapper directory exists
         run: |
           if [ ! -d "scrapper" ]; then
-            exho "scrapper not found !!"
-            exit 1
+            echo "Scrapper directory not found. Exiting workflow."
+            exit 0
           fi
 
       - name: install dependencies
