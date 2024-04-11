@@ -18,14 +18,8 @@ async function readLocalSitemaps(dir) {
 // Function to identify updated files within a specific folder
 function identifyUpdatedFiles() {
     try {
-        // Get the commit hash for HEAD dynamically
-        const headHash = execSync('git rev-parse HEAD', { encoding: 'utf-8' }).trim();
-        
-        // Get the commit hash for the parent commit dynamically
-        const parentHash = execSync('git log --pretty=%H -n 1 HEAD^', { encoding: 'utf-8' }).trim();
-
         // Run the Git command to identify updated files within the scrapper folder
-        const command = `git diff --name-only ${parentHash} ${headHash} -- scrapper/`;
+        const command = `git diff --name-only HEAD^ HEAD -- scrapper/`;
         const updatedFiles = execSync(command, { encoding: 'utf-8' });
 
         // Split the output by newline character to get a list of updated file names
