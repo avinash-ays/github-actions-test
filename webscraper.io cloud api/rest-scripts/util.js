@@ -19,7 +19,7 @@ async function readLocalSitemaps(dir) {
 function identifyUpdatedFiles() {
     try {
         // Run the Git command to identify updated files within the scrapper folder
-        const command = `git diff --name-only HEAD^ HEAD -- scrapper/`;
+        const command = `git diff --name-only HEAD^ -- scrapper/`;
         const updatedFiles = execSync(command, { encoding: 'utf-8' });
 
         // Split the output by newline character to get a list of updated file names
