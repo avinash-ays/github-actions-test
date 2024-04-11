@@ -8,7 +8,7 @@
             "parentSelectors": [
                 "_root"
             ],
-            "type": "SelectorText",
+            "type": "SelectorTexttt",
             "multiple": true,
             "id": "title",
             "selector": "h1",
