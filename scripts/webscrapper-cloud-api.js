@@ -1,5 +1,5 @@
 // Importing client from "../config" assuming it exports required functions
-const client = require("../config");
+const client = require("./config");
 
 async function getSitemaps() {
     try {

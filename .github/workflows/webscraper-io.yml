@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'scrapper/**'
+      - "scrapper/**"
 
 jobs:
   scrape:
@@ -14,8 +14,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Check if scrapper directory exists
+        run: |
+          if [ ! -d "scrapper"]; then
+            exit 1
+          fi
+
       - name: install dependencies
-        run : npm install
+        run: npm install
 
       - name: Run script
-        run : node webscraper.io\ cloud\ api/rest-scripts/scrape-job.script.js
+        run: node scripts/scrape-job.script.js
