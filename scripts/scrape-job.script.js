@@ -30,7 +30,7 @@ async function main() {
       //create a new sitemap
       const sitemap = await createSitemap(local.data);
       //start new scrap-job for new sitemap created
-      await createScrapJob(sitemap.id, JSON.parse(local.data));
+      // await createScrapJob(sitemap.id, JSON.parse(local.data));
     }
     
   } catch (error) {
