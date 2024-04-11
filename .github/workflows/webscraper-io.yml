@@ -14,13 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Check if scrapper directory exists
-        run: |
-          if [ ! -d "scrapper" ]; then
-            echo "Scrapper directory not found. Exiting workflow."
-            exit 1
-          fi
-
       - name: install dependencies
         run: npm install
 

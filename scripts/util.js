@@ -15,8 +15,13 @@ async function readLocalSitemaps(dir) {
     }));
     return fileObjects;
   } catch (error) {
-    console.error("Error reading local sitemap files:", error);
-    throw error;
+    if (error.code === 'ENOENT') {
+      console.error("The 'scrapper' directory does not exist.");
+      return [];
+    } else {
+      console.error("Error reading local sitemap files:", error);
+      throw error;
+    }
   }
 }
 
