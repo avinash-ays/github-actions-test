@@ -21,17 +21,17 @@ async function main() {
     console.log("toDeleteOnCloud =>", toDeleteOnCloud);
 
     //delete sitemap which are not present on repo dir scrapper
-    for (const cloud of toDeleteOnCloud) {
-      await deleteSitemap(cloud.id);
-    }
+    // for (const cloud of toDeleteOnCloud) {
+    //   await deleteSitemap(cloud.id);
+    // }
 
-    // Create sitemaps which are not on cloud
-    for (const local of toCreateOnCloud) {
-      //create a new sitemap
-      const sitemap = await createSitemap(local.data);
-      //start new scrap-job for new sitemap created
-      await createScrapJob(sitemap.id, JSON.parse(local.data));
-    }
+    // // Create sitemaps which are not on cloud
+    // for (const local of toCreateOnCloud) {
+    //   //create a new sitemap
+    //   const sitemap = await createSitemap(local.data);
+    //   //start new scrap-job for new sitemap created
+    //   await createScrapJob(sitemap.id, JSON.parse(local.data));
+    // }
     
   } catch (error) {
     console.error("An error occurred:", error);
