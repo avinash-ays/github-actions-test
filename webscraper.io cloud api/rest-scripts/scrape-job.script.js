@@ -44,7 +44,7 @@ async function main() {
     console.log('calling diff function');
     const modifiedFiles = identifyUpdatedFiles();
     console.log('Modified Files in scrapper', + ':');
-    console.log(modifiedFiles.length >0 ? modifiedFiles .join('\n'):[]);
+    console.log(modifiedFiles && modifiedFiles.length >0 ? modifiedFiles .join('\n'):[]);
   } catch (error) {
     console.error("An error occurred:", error);
   }
