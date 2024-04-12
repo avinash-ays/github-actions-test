@@ -2,9 +2,7 @@ name: Update Sitemaps
 on:
   push:
     branches:
-      - main
-    paths:
-      - "scrapper/**"
+      - demo
 
 jobs:
   scrape:
