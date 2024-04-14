@@ -125,7 +125,7 @@
             "clickType": "clickOnce",
             "delay": 2000,
             "discardInitialElements": "do-not-discard",
-            "multiple": true,
+            "multiple": false,
             "selector": "body"
         }
     ]
