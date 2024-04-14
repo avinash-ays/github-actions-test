@@ -1,11 +1,19 @@
 const { readLocalSitemaps, findDiffSitemaps } = require('./util');
 const { getSitemaps, createSitemap, deleteSitemap, createScrapJob } = require('./webscrapper-cloud-api');
 const path = require('path');
-const fs = require('fs');
-const fsPromises = fs.promises;
+const fs = require('fs').promises;
 
-function isLocalDirPresent(dirPath) {
-  return fs.existsSync(dirPath);
+
+async function isLocalDirPresent(dirPath) {
+  try {
+    await fs.access(dirPath);
+    return true;
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return false;
+    }
+    throw error;
+  }
 }
 
 async function main() {
@@ -38,7 +46,7 @@ async function main() {
     console.log("Creating the sitemaps not on cloud...");
     for (const local of toCreateOnCloud) {
       // Read local file data
-      const data = await fs.readFile(path.join("scrapper", local.filename), 'utf8');
+      const data = await fs.readFile(path.join("scrapper/", local.filename), 'utf8');
       const jsonData = JSON.parse(data);
       const updatedJson = {...jsonData, _id : local.name};
 

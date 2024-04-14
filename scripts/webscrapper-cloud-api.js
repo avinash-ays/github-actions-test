@@ -6,7 +6,7 @@ async function getSitemaps() {
         let generator = client.getSitemaps();
         return await generator.getAllRecords();
     } catch (error) {
-        console.error("Failed to get Sitemaps:", error);
+        console.error("Failed to get Sitemaps:", error.message);
     }
 }
 
@@ -14,7 +14,7 @@ async function createSitemap(sitemap) {
     try {
         return await client.createSitemap(sitemap);
     } catch (error) {
-        console.error("Failed to create sitemap:", error);
+        console.error("Failed to create sitemap:", error.message);
     }
 }
 
@@ -22,7 +22,7 @@ async function getSitemapById(id) {
     try {
         return await client.getSitemap(id);
     } catch (error) {
-        console.error("Failed to get sitemap:", error);
+        console.error("Failed to get sitemap:", error.message);
     }
 }
 
@@ -30,7 +30,7 @@ async function deleteSitemap(sitemapId) {
     try {
         return await client.deleteSitemap(sitemapId);
     } catch (error) {
-        console.error("Failed to delete sitemap:", error);
+        console.error("Failed to delete sitemap:", error.message);
     }
 }
 
@@ -38,7 +38,7 @@ async function updateSitemap(sitemap) {
     try {
         return await client.updateSitemap(sitemap);
     } catch (error) {
-        console.error("Failed to update sitemap", error);
+        console.error("Failed to update sitemap", error.message);
     }
 }
 
