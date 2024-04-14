@@ -12,7 +12,7 @@
             ],
             "regex": "",
             "selector": "div.sc-page-title-results-total",
-            "type": "SelectorText"
+            "type": "SelectorTextt"
         },
         {
             "id": "pagination",

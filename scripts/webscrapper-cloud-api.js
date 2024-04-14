@@ -14,7 +14,7 @@ async function createSitemap(sitemap) {
     try {
         return await client.createSitemap(sitemap);
     } catch (error) {
-        console.error("Failed to create sitemap:", error);
+        console.error("Failed to create sitemap:", error.message);
     }
 }
 

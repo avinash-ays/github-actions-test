@@ -16,10 +16,6 @@ async function isLocalDirPresent(dirPath) {
   }
 }
 
-// Adidas-Mens__4c507cd4edbe9f71c1c1426f07d6cffc4ecb94c5
-// GoatSitemap-Mens__88732aebbd529c525e4cf6185405cc87c349c53b
-// samsclub-com-products__cfb309f9e4a1d2a747c4aec838ab6d2995f54aec
-
 async function main() {
   try {
     // console.log("Fetching cloud sitemaps...");
