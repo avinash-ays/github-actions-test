@@ -36,7 +36,21 @@ async function findDiffSitemaps(local, cloud) {
   };
 }
 
+async function isLocalDirPresent(dirPath) {
+  try {
+    await fs.access(dirPath);
+    return true;
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return false;
+    }
+    throw error;
+  }
+}
+
+
 module.exports = {
   readLocalSitemaps,
   findDiffSitemaps,
+  isLocalDirPresent,
 };
