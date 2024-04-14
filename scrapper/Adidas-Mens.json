@@ -100,7 +100,7 @@
             ],
             "type": "SelectorText",
             "selector": "div.color-label___2hXaD",
-            "multiple": false,
+            "multiple": true,
             "regex": ""
         },
         {
