@@ -11,7 +11,7 @@
             ],
             "type": "SelectorElementScroll",
             "selector": "a.GridCellLink__Link-sc-2zm517-0",
-            "multiple": true,
+            "multiple": false,
             "delay": 2000,
             "elementLimit": 60
         },

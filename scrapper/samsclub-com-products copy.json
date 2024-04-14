@@ -6,7 +6,7 @@
     "selectors": [
         {
             "id": "results-count",
-            "multiple": false,
+            "multiple": true,
             "parentSelectors": [
                 "_root"
             ],
