@@ -52,7 +52,7 @@
             ],
             "type": "SelectorText",
             "selector": "ol[data-qa=\"product_breadcrumbs_wrapper\"] li[class=\"ProductBreadcrumbs__ListItem-sc-1xjrw34-0 hsJiLz\"]:nth-of-type(2)",
-            "multiple": false,
+            "multiple": true,
             "regex": ""
         },
         {
