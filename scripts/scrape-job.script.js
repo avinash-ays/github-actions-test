@@ -38,7 +38,7 @@ async function main() {
     console.log("Creating the sitemaps not on cloud...");
     for (const local of toCreateOnCloud) {
       // Read local file data
-      const data = await fs.readFile(path.join("scrapper", local.filename), 'utf8');
+      const data = await fs.readFile(path.join("scrapper", local.filename), { encoding: 'utf8' });
       const jsonData = JSON.parse(data);
       const updatedJson = {...jsonData, _id : local.name};
 
