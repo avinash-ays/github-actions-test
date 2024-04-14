@@ -1,0 +1,185 @@
+{
+    "_id": "StockX-sneakers",
+    "startUrl": [
+        "https://stockx.com/en-gb/sneakers"
+    ],
+    "selectors": [
+        {
+            "id": "pagination",
+            "paginationType": "auto",
+            "parentSelectors": [
+                "_root",
+                "pagination"
+            ],
+            "selector": "a[aria-current]",
+            "type": "SelectorPagination"
+        },
+        {
+            "id": "products",
+            "linkType": "linkFromHref",
+            "multiple": true,
+            "parentSelectors": [
+                "pagination"
+            ],
+            "selector": ".css-jurd7a a",
+            "type": "SelectorLink"
+        },
+        {
+            "id": "product-name",
+            "multiple": false,
+            "parentSelectors": [
+                "products"
+            ],
+            "regex": "",
+            "selector": "p.css-1j8sum3",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-category",
+            "multiple": false,
+            "parentSelectors": [
+                "products"
+            ],
+            "regex": "",
+            "selector": "li:nth-of-type(2) a.chakra-breadcrumb__link",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-brand",
+            "multiple": false,
+            "parentSelectors": [
+                "products"
+            ],
+            "regex": "",
+            "selector": "li:nth-of-type(3) a.chakra-breadcrumb__link",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-img",
+            "multiple": false,
+            "parentSelectors": [
+                "products"
+            ],
+            "selector": "img.css-1sh8ayr",
+            "type": "SelectorImage"
+        },
+        {
+            "id": "product-details",
+            "multiple": false,
+            "parentSelectors": [
+                "products"
+            ],
+            "selector": "section[data-component='ProductDetails']",
+            "type": "SelectorElement"
+        },
+        {
+            "id": "product-description",
+            "multiple": false,
+            "parentSelectors": [
+                "products"
+            ],
+            "regex": "",
+            "selector": "p.css-1k2nzv4",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-sku",
+            "multiple": false,
+            "parentSelectors": [
+                "product-details"
+            ],
+            "regex": "",
+            "selector": "div[data-component=\"product-trait\"]:nth-of-type(1) p[class=\"chakra-text css-pxl067\"]",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-colorway",
+            "multiple": false,
+            "parentSelectors": [
+                "product-details"
+            ],
+            "regex": "",
+            "selector": "div[data-component=\"product-trait\"]:nth-of-type(2) p[class=\"chakra-text css-pxl067\"]\t",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-retail-price",
+            "multiple": false,
+            "parentSelectors": [
+                "product-details"
+            ],
+            "regex": "",
+            "selector": "div:nth-of-type(3) p",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-release-date",
+            "multiple": false,
+            "parentSelectors": [
+                "product-details"
+            ],
+            "regex": "",
+            "selector": "div:nth-of-type(4) p",
+            "type": "SelectorText"
+        },
+        {
+            "clickActionType": "real",
+            "clickElementSelector": "div.css-2lhf4t",
+            "clickElementUniquenessType": "uniqueText",
+            "clickType": "clickOnce",
+            "delay": 2000,
+            "discardInitialElements": "do-not-discard",
+            "id": "product-size-price",
+            "multiple": false,
+            "parentSelectors": [
+                "products"
+            ],
+            "selector": "body",
+            "type": "SelectorElementClick"
+        },
+        {
+            "clickActionType": "real",
+            "clickElementSelector": "span[data-testid]",
+            "clickElementUniquenessType": "uniqueText",
+            "clickType": "clickMore",
+            "delay": 2000,
+            "discardInitialElements": "do-not-discard",
+            "id": "product-sizes-available",
+            "multiple": true,
+            "parentSelectors": [
+                "product-size-price"
+            ],
+            "selector": "div.chakra-menu__menu-list",
+            "type": "SelectorElementClick"
+        },
+        {
+            "id": "product-size",
+            "multiple": false,
+            "parentSelectors": [
+                "wrapper_for_product-size1_product-price1"
+            ],
+            "regex": "",
+            "selector": "dt",
+            "type": "SelectorText"
+        },
+        {
+            "id": "product-price",
+            "multiple": false,
+            "parentSelectors": [
+                "wrapper_for_product-size1_product-price1"
+            ],
+            "regex": "",
+            "selector": "dd",
+            "type": "SelectorText"
+        },
+        {
+            "id": "wrapper_for_product-size1_product-price1",
+            "multiple": true,
+            "parentSelectors": [
+                "product-sizes-available"
+            ],
+            "selector": "button.css-1uqbhsq",
+            "type": "SelectorElement"
+        }
+    ]
+}

@@ -1,0 +1,132 @@
+{
+    "_id": "Adidas-Mens",
+    "startUrl": [
+        "https://www.adidas.com/us/men-shoes"
+    ],
+    "selectors": [
+        {
+            "id": "product",
+            "parentSelectors": [
+                "nextbutton"
+            ],
+            "type": "SelectorLink",
+            "selector": ".with-variation-carousel .lift-image___3FzoX a.glass-product-card__assets-link",
+            "multiple": true,
+            "linkType": "linkFromHref"
+        },
+        {
+            "id": "availableColour",
+            "parentSelectors": [
+                "product"
+            ],
+            "type": "SelectorLink",
+            "selector": "a.variation___tBgJN",
+            "multiple": true,
+            "linkType": "linkFromHref"
+        },
+        {
+            "id": "product-name",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": ".sidebar___29cCJ .name___120FN span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "prodcut-category",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": ".pre-header___3bx4D div span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "product-description",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": "div.text-content___13aRm",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "gender",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": ".desktop___u0uum [manual_cm_sp='breadcrumb-_-usmen'] span",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "product-image",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorImage",
+            "selector": "div.view-cell-container___aqB7e:nth-of-type(n+2) img",
+            "multiple": false
+        },
+        {
+            "id": "product-size",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": "button[class=\"gl-label size___2lbev\"]",
+            "multiple": true,
+            "regex": ""
+        },
+        {
+            "id": "product-price",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": ".gl-vspace .price___Z74_w div.gl-price-item",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "colour",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": "div.color-label___2hXaD",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "product_code (SKU)",
+            "parentSelectors": [
+                "availableColour"
+            ],
+            "type": "SelectorText",
+            "selector": "ul:nth-of-type(2) li.gl-vspace-bpall-small:nth-of-type(4)",
+            "multiple": false,
+            "regex": ""
+        },
+        {
+            "id": "nextbutton",
+            "parentSelectors": [
+                "_root"
+            ],
+            "type": "SelectorElementClick",
+            "clickActionType": "real",
+            "clickElementSelector": "a[data-auto-id=\"plp-pagination-next\"]",
+            "clickElementUniquenessType": "uniqueText",
+            "clickType": "clickOnce",
+            "delay": 4000,
+            "discardInitialElements": "do-not-discard",
+            "multiple": true,
+            "selector": "body"
+        }
+    ]
+}
