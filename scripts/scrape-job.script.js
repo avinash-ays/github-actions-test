@@ -1,20 +1,7 @@
-const { readLocalSitemaps, findDiffSitemaps } = require('./util');
+const { readLocalSitemaps, findDiffSitemaps, isLocalDirPresent } = require('./util');
 const { getSitemaps, createSitemap, deleteSitemap, createScrapJob } = require('./webscrapper-cloud-api');
 const path = require('path');
 const fs = require('fs').promises;
-
-
-async function isLocalDirPresent(dirPath) {
-  try {
-    await fs.access(dirPath);
-    return true;
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      return false;
-    }
-    throw error;
-  }
-}
 
 async function main() {
   try {
